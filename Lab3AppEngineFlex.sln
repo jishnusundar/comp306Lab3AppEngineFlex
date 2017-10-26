@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CA5CAD01-19D8-4230-84AE-20536B35DBD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B9524D3-0BE3-47BF-8A7B-C1CC1232A044}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Lab3AppEngineFlex", "src\Lab3AppEngineFlex\Lab3AppEngineFlex.xproj", "{937F0586-A73B-4A0F-B250-E5C3830E0A0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{937F0586-A73B-4A0F-B250-E5C3830E0A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937F0586-A73B-4A0F-B250-E5C3830E0A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937F0586-A73B-4A0F-B250-E5C3830E0A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937F0586-A73B-4A0F-B250-E5C3830E0A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{937F0586-A73B-4A0F-B250-E5C3830E0A0F} = {CA5CAD01-19D8-4230-84AE-20536B35DBD2}
+	EndGlobalSection
+EndGlobal
