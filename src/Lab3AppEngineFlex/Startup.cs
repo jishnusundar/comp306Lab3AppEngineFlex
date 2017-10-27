@@ -35,6 +35,8 @@ namespace Lab3AppEngineFlex
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
+            
+            services.AddSession(/* options go here */);
 
             services.AddMvc();
         }
@@ -60,6 +62,8 @@ namespace Lab3AppEngineFlex
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

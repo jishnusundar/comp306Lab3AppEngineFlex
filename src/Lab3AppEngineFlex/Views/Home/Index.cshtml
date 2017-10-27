@@ -1,109 +1,237 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order details</title>
+    @*<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+    
+</head>
+<body>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="Home" method="post" id="fileForm" role="form">
+                    <fieldset>
+                        <legend class="text-center">Enter your order details here</legend>
+                        <div class="form-group">
+                            <label for="firstName">First Name: </label>
+                            @if (TempData["firstName"] != null)
+                            {
+                                <input required type="text" name="firstName" class="form-control" value="@TempData["firstName"]" />
+                            }
+                            else
+                            {
+                                <input required type="text" name="firstName" class="form-control" />
+                            }
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last name: </label>
+                            <input class="form-control" type="text" name="lastName" value="@TempData["lastName"]" />
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" formaction="/Home/checkUser" formmethod="post" class="btn btn-success" value="Remember Me?" />
+
+                        </div>
+                        @if (TempData["userFound"] != null && TempData["userFound"].ToString() == "Not Found")
+                        {
+                            <div class="form-group">
+                                <div class="alert alert-warning">
+                                    <strong>Sorry!</strong> This customer's details are not found in our records.
+                                </div>
+                            </div>
+                        }
+
+
+                        <div class="form-group">
+                            <label for="city">City: </label>
+                            <input class="form-control" type="text" name="city" value="@TempData["city"]" />
+
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code: </label>
+                            <input class="form-control" type="text" name="postalCode" value="@TempData["postalCode"]" />
+
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input class="form-control" type="text" name="phone" value="@TempData["phone"]" />
+
+                        </div>
+                        <div class="form-group">
+                            <label for="province">Province: </label>
+                            <select class="form-control" name="province">
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "alberta")
+                                {
+                                    <option value="alberta" selected>Alberta</option>
+                                }
+                                else
+                                {
+                                    <option value="alberta">Alberta</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "bc")
+                                {
+                                    <option value="bc" selected>British Columbia</option>
+                                }
+                                else
+                                {
+                                    <option value="bc">British Columbia</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "manitoba")
+                                {
+                                    <option value="manitoba" selected>Manitoba</option>
+                                }
+                                else
+                                {
+                                    <option value="manitoba">Manitoba</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "nb")
+                                {
+                                    <option value="nb" selected>New Brunswick</option>
+                                }
+                                else
+                                {
+                                    <option value="nb">New Brunswick</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "nfAndLab")
+                                {
+                                    <option value="nfAndLab" selected>Newfoundland and Labrador</option>
+                                }
+                                else
+                                {
+                                    <option value="nfAndLab">Newfoundland and Labrador</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "nWTerr")
+                                {
+                                    <option value="nWTerr" selected>Northwest Territories</option>
+                                }
+                                else
+                                {
+                                    <option value="nWTerr">Northwest Territories</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "NovaScotia")
+                                {
+                                    <option value="NovaScotia" selected>Nova Scotia</option>
+                                }
+                                else
+                                {
+                                    <option value="NovaScotia">Nova Scotia</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "nunavut")
+                                {
+                                    <option value="nunavut" selected>Nunavut</option>
+                                }
+                                else
+                                {
+                                    <option value="nunavut">Nunavut</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "ontario")
+                                {
+                                    <option value="ontario" selected>Ontario</option>
+                                }
+                                else
+                                {
+                                    <option value="ontario">Ontario</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "PEIsland")
+                                {
+                                    <option value="PEIsland" selected>Prince Edward Island</option>
+                                }
+                                else
+                                {
+                                    <option value="PEIsland">Prince Edward Island</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "quebec")
+                                {
+                                    <option value="quebec" selected>Quebec</option>
+                                }
+                                else
+                                {
+                                    <option value="quebec">Quebec</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "saskatchewan")
+                                {
+                                    <option value="saskatchewan" selected>Saskatchewan</option>
+                                }
+                                else
+                                {
+                                    <option value="saskatchewan">Saskatchewan</option>
+                                }
+
+                                @if (TempData["province"] != null && TempData["province"].ToString() == "yukon")
+                                {
+                                    <option value="yukon" selected>Yukon</option>
+                                }
+                                else
+                                {
+                                    <option value="yukon">Yukon</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Check your items here</legend>
+                                <input type="checkbox" name="item" value="2" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("2") ? "checked" : "") /><label style="padding-left:5px;">Burger</label><br />
+
+
+                                <input type="checkbox" name="item" value="3" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("3") ? "checked" : "") /><label style="padding-left:5px;">Rolled Oatmeal</label><br />
+
+
+                                <input type="checkbox" name="item" value="4" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("4") ? "checked" : "") /><label style="padding-left:5px;">French Toast</label><br />
+
+
+                                <input type="checkbox" name="item" value="5" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("5") ? "checked" : "") /><label style="padding-left:5px;">Belgian Waffles</label><br />
+
+
+                                <input type="checkbox" name="item" value="1" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("1") ? "checked" : "") /><label style="padding-left:5px;">Traditional BLT </label><br />
+
+
+                                <input type="checkbox" name="item" value="6" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("6") ? "checked" : "") /><label style="padding-left:5px;">Buttermilk Pancakes</label><br />
+
+
+                            </fieldset>
+
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="radio" name="type" value="Pickup" @(TempData["pickup"] != null && TempData["pickup"].ToString() == "True" ? "checked" : "")> Pick-up
+                            <input type="radio" name="type" value="Delivery" @(TempData["pickup"] != null && TempData["pickup"].ToString() == "False" ? "checked" : "")> Delivery
+                        </div>
+                        <div class="form-group">
+                            <label for="comments">Comments: (max-200 characters)</label> <br />
+                            <textarea class="form-control" name="comments">@(TempData["comments"] != null ? TempData["comments"].ToString() : "")</textarea>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="submit_reg" value="Place Order">
+                        </div>
+
+                    </fieldset>
+                </form><!-- ends register form -->
+
+            </div><!-- ends col-6 -->
+
+            <div class="col-md-6">
+                <h1 class="page-header">Place your order!</h1>
+                <h3><b>Where food speaks with your palate</b></h3>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699562">Add an appsetting in config and access it in app.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
+    <footer></footer>
+</body>
+</html>
