@@ -11,8 +11,9 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <form action="Home" method="post" id="fileForm" role="form">
+            <form action="Home" method="post" id="fileForm" role="form">
+                <div class="col-md-6">
+
                     <fieldset>
                         <legend class="text-center">Enter your order details here</legend>
                         <div class="form-group">
@@ -25,7 +26,7 @@
                             {
                                 <input required type="text" name="firstName" class="form-control" />
                             }
-                            
+
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last name: </label>
@@ -182,31 +183,7 @@
                                 }
                             </select>
                         </div>
-                        <div class="form-group">
-                            <fieldset>
-                                <legend>Check your items here</legend>
-                                <input type="checkbox" name="item" value="2" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("2") ? "checked" : "") /><label style="padding-left:5px;">Burger</label><br />
-
-
-                                <input type="checkbox" name="item" value="3" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("3") ? "checked" : "") /><label style="padding-left:5px;">Rolled Oatmeal</label><br />
-
-
-                                <input type="checkbox" name="item" value="4" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("4") ? "checked" : "") /><label style="padding-left:5px;">French Toast</label><br />
-
-
-                                <input type="checkbox" name="item" value="5" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("5") ? "checked" : "") /><label style="padding-left:5px;">Belgian Waffles</label><br />
-
-
-                                <input type="checkbox" name="item" value="1" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("1") ? "checked" : "") /><label style="padding-left:5px;">Traditional BLT </label><br />
-
-
-                                <input type="checkbox" name="item" value="6" style="padding-top:5px;" @(TempData["items"] != null && TempData["items"].ToString().Contains("6") ? "checked" : "") /><label style="padding-left:5px;">Buttermilk Pancakes</label><br />
-
-
-                            </fieldset>
-
-
-                        </div>
+                        
 
 
                         <div class="form-group">
@@ -222,14 +199,58 @@
                         </div>
 
                     </fieldset>
-                </form><!-- ends register form -->
 
-            </div><!-- ends col-6 -->
 
-            <div class="col-md-6">
-                <h1 class="page-header">Place your order!</h1>
-                <h3><b>Where food speaks with your palate</b></h3>
-            </div>
+                </div><!-- ends col-6 -->
+
+                <div class="col-md-6">
+                    <h1 class="page-header">Place your order!</h1>
+                    <h3><b>Where food speaks with your palate</b></h3>
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Check your items here</legend>
+
+                            <div class="imageBox">
+                                <h3 style="display:inline;">Burger</h3> <input style="margin-left:5px;padding-top:5px;display:inline;" type="checkbox" name="item" value="2"  @(TempData["items"] != null && TempData["items"].ToString().Contains("2") ? "checked" : "") /><br />
+                            </div>
+                            <img style="padding-top:10px;" class="img-responsive" src="https://storage.googleapis.com/white-resolver-179619.appspot.com/burger.jpg" />
+                            <hr style="margin-bottom:15px;"/>
+
+                            <div class="imageBox">
+                                <h3 style="display:inline;">Rolled Oatmeal</h3><input style="margin-left:5px;padding-top:5px;display:inline;" type="checkbox" name="item" value="3" @(TempData["items"] != null && TempData["items"].ToString().Contains("3") ? "checked" : "") /><br />
+                            </div>
+                            <img style="padding-top:10px;" class="img-responsive" src="https://storage.googleapis.com/white-resolver-179619.appspot.com/oatmeal.jpg"/>
+                            <hr style="margin-bottom:15px;" />
+
+                            <div class="imageBox">
+                                <h3 style="display:inline;">French Toast</h3><input style="margin-left:5px;padding-top:5px;display:inline;" type="checkbox" name="item" value="4"  @(TempData["items"] != null && TempData["items"].ToString().Contains("4") ? "checked" : "") /><br />
+</div>
+                            <img style="padding-top:10px;" class="img-responsive" src="https://storage.googleapis.com/white-resolver-179619.appspot.com/maxresdefault.jpg"/>
+                            <hr style="margin-bottom:15px;" />
+
+                            <div class="imageBox">
+                                <h3 style="display:inline;">Belgian Waffles</h3><input style="margin-left:5px;padding-top:5px;display:inline;" type="checkbox" name="item" value="5"  @(TempData["items"] != null && TempData["items"].ToString().Contains("5") ? "checked" : "") /><br />
+</div>
+                            <img style="padding-top:10px;" class="img-responsive" src="https://storage.googleapis.com/white-resolver-179619.appspot.com/waffle.jpg" />
+                            <hr style="margin-bottom:15px;" />
+
+                            <div class="imageBox">
+                                <h3 style="display:inline;">Traditional BLT </h3><input style="margin-left:5px;padding-top:5px;display:inline;" type="checkbox" name="item" value="1"  @(TempData["items"] != null && TempData["items"].ToString().Contains("1") ? "checked" : "") /><br />
+</div>
+                            <img style="padding-top:10px;" class="img-responsive" src="https://storage.googleapis.com/white-resolver-179619.appspot.com/BLT%202.JPG" />
+                            <hr style="margin-bottom:15px;" />
+
+                            <div class="imageBox">
+                                <h3 style="display:inline;">Buttermilk Pancakes</h3><input style="margin-left:5px;padding-top:5px;display:inline;" type="checkbox" name="item" value="6"  @(TempData["items"] != null && TempData["items"].ToString().Contains("6") ? "checked" : "") /><br />
+</div>
+                            <img style="padding-top:10px;" class="img-responsive" src="https://storage.googleapis.com/white-resolver-179619.appspot.com/pancake.jpg" />
+
+                        </fieldset>
+
+
+                    </div>
+                </div>
+            </form><!-- ends register form -->
         </div>
     </div>
     <footer></footer>

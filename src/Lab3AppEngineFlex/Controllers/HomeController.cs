@@ -20,7 +20,6 @@ namespace Lab3AppEngineFlex.Controllers
         {
             string connectionString = "Data Source=35.196.185.228,1433;Initial Catalog=comp306_hotel;Integrated Security=False;User ID=jishnusundar423;Password=password1234;MultipleActiveResultSets=True";
 
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

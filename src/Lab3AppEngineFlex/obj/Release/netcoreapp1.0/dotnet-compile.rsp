@@ -1,7 +1,8 @@
 --temp-output:C:\Users\Jishnu\Desktop\SEM6\Web API & Cloud Computing\Lab3AppEngineFlex\src\Lab3AppEngineFlex\obj\Release\netcoreapp1.0\
 --out:C:\Users\Jishnu\Desktop\SEM6\Web API & Cloud Computing\Lab3AppEngineFlex\src\Lab3AppEngineFlex\bin\Release\netcoreapp1.0\Lab3AppEngineFlex.dll
---define:RELEASE
+--define:DEBUG
 --define:TRACE
+--define:RELEASE
 --define:NETCOREAPP1_0
 --suppress-warning:CS1701
 --suppress-warning:CS1702
