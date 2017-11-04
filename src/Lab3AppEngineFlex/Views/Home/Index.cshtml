@@ -11,7 +11,9 @@
 
     <div class="container">
         <div class="row">
-            <form action="Home" method="post" id="fileForm" role="form">
+            <h1 class="page-header">Place your order!</h1>
+            <h3><b>Where food speaks with your palate</b></h3>
+            <form style="padding-top:50px;" action="Home" method="post" id="fileForm" role="form">
                 <div class="col-md-6">
 
                     <fieldset>
@@ -195,8 +197,11 @@
                             <textarea class="form-control" name="comments">@(TempData["comments"] != null ? TempData["comments"].ToString() : "")</textarea>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-success" type="submit" name="submit_reg" value="Place Order">
+                            @*<input class="btn btn-success" type="submit" name="submit_reg" value="Place Order">*@
+                            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Place Order</button>
                         </div>
+
+                        <a href="https://storage.googleapis.com/white-resolver-179619.appspot.com/menu.pdf" download="menu.pdf" class="btn btn-success"><span class="glyphicon glyphicon-download-alt"></span> Download our Menu</a>
 
                     </fieldset>
 
@@ -204,8 +209,7 @@
                 </div><!-- ends col-6 -->
 
                 <div class="col-md-6">
-                    <h1 class="page-header">Place your order!</h1>
-                    <h3><b>Where food speaks with your palate</b></h3>
+                    
                     <div class="form-group">
                         <fieldset>
                             <legend>Check your items here</legend>

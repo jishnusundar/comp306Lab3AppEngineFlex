@@ -38,6 +38,9 @@ namespace Lab3AppEngineFlex
             
             services.AddSession(/* options go here */);
 
+            services.Configure<CloudStorageOptions>(
+                Configuration.GetSection("GoogleCloudStorage"));
+
             services.AddMvc();
         }
 
