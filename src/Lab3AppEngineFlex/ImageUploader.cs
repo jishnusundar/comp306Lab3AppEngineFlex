@@ -27,7 +27,7 @@ namespace Lab3AppEngineFlex
 
             var imageObject = await _storageClient.UploadObjectAsync(
                 bucket: "white-resolver-179619.appspot.com",
-                objectName: Fname,
+                objectName: "user-uploads/"+Fname,
                 contentType: image.ContentType,
                 source: image.OpenReadStream(),
                 options: new UploadObjectOptions { PredefinedAcl = imageAcl }
