@@ -10,6 +10,7 @@ using Lab3AppEngineFlex.ViewModels;
 using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using Lab3AppEngineFlex.Models;
 
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -35,8 +36,15 @@ namespace Lab3AppEngineFlex.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-           
-            return View();
+            GImages images = new GImages();
+            images.URL = new List<string>();
+
+            foreach (var obj in _storage.ListObjects("white-resolver-179619.appspot.com","user-uploads/"))
+            {
+                images.URL.Add(Convert.ToString(obj.MediaLink));
+            }
+
+            return View(images);
         }
 
 
@@ -64,7 +72,7 @@ namespace Lab3AppEngineFlex.Controllers
             
             string linkToImage = await _imageUploader.UploadImage(file, file.FileName);
            
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

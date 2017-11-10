@@ -1,4 +1,5 @@
-﻿@*<form method="post" enctype="multipart/form-data" action="/Gallery/Index">
+﻿@model Lab3AppEngineFlex.Models.GImages
+@*<form method="post" enctype="multipart/form-data" action="/Gallery/Index">
     <div>
         <p>Upload one or more files using this form:</p>
         <input type="file" name="files" />
@@ -26,7 +27,7 @@
 
     <div class="container">
         <div style="max-width: 650px; margin: auto;">
-            <h1 class="page-header">Upload your image</h1>
+            <h1 class="page-header">Share you experience with us! Drop a pic!</h1>
             <p class="lead">Select an image file</p>
             <form id="upload-image-form" action="/Gallery/Index" method="post" enctype="multipart/form-data">
                 <div id="image-preview-div" style="display: none">
@@ -48,6 +49,17 @@
                 </div>
             </div>
             <div id="message"></div>
+            <hr />
+            <div class="col-md-8">
+                <h2>Uploads by customers</h2>
+                @foreach (string link in Model.URL)
+            {
+                    <img style="padding-top:10px;" class="img-responsive" src="@link" />
+                    <hr />
+
+                }
+            </div>
+           
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
